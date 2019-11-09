@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 if [ -z $OUT ]
 then
-  OUT=main.out
+  OUT=main
 fi
+
+OUT=${OUT}.out
 
 if [ -z $SOURCE ]
 then
