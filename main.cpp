@@ -1,43 +1,11 @@
 ﻿// #include <windows.h>  // for MS Windows
 // #include <GL/freeglut.h>  // GLUT, include glu.h and gl.h
-#include <GL/glu.h>
-#include <GL/glut.h>
+#include "main.h"
 // #include <GL/glx.h> /* this includes the necessary X headers /
-#include <GL/gl.h>
 
 /* Global variables */
 char title[] = "OpenGL-PUC PR";
 GLfloat nRange = 200;
-
-void cubo(float a) {
-	glBegin(GL_TRIANGLE_STRIP);
-	glColor3f(0.0, 0.1, 0.5);
-	glVertex3f(-a / 2, a / 2, a / 2);
-	glVertex3f(-a / 2, -a / 2, a / 2);
-	glVertex3f(a / 2, a / 2, a / 2);
-	glVertex3f(a / 2, -a / 2, a / 2);
-	glVertex3f(a / 2, a / 2, -a / 2);
-	glColor3f(0.5, 0.1, 0.5);
-	glVertex3f(a / 2, -a / 2, -a / 2);
-	glVertex3f(-a / 2, a / 2, -a / 2);
-	glVertex3f(-a / 2, -a / 2, -a / 2);
-	glVertex3f(-a / 2, a / 2, a / 2);
-	glVertex3f(-a / 2, -a / 2, a / 2);
-	glEnd();
-	glBegin(GL_TRIANGLE_STRIP);
-	glVertex3f(-a / 2, a / 2, -a / 2);
-	glVertex3f(-a / 2, a / 2, a / 2);
-	glVertex3f(a / 2, a / 2, -a / 2);
-	glVertex3f(a / 2, a / 2, a / 2);
-	glEnd();
-	glBegin(GL_TRIANGLE_STRIP);
-	glVertex3f(a / 2, -a / 2, -a / 2);
-	glVertex3f(a / 2, -a / 2, a / 2);
-	glVertex3f(-a / 2, -a / 2, -a / 2);
-	glVertex3f(-a / 2, -a / 2, a / 2);
-	glEnd();
-}
-
 
 /* Initialize OpenGL Graphics */
 void initGL() {
@@ -65,13 +33,10 @@ void render() {
 /* Handler for window re-size event. Called back when the window first appears and
 whenever the window is re-sized with its new width and height */
 void reshape(GLsizei w, GLsizei h) {
-
 	if (h == 0) h = 1;
 
-	// Especifica as dimens�es da Viewport
 	glViewport(0, 0, w, h);
 
-	// Inicializa o sistema de coordenadas
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
@@ -88,9 +53,38 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(640, 480);   // Set the window's initial width & height
 	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
 	glutCreateWindow(title);          // Create window with the given title
-	glutDisplayFunc(render);       // Register callback handler for window re-paint event
-	glutReshapeFunc(reshape);       // Register callback handler for window re-size event
-	initGL();                       // Our own OpenGL initialization
-	glutMainLoop();                 // Enter the infinite event-processing loop
+	glutDisplayFunc(render);          // Register callback handler for window re-paint event
+	glutReshapeFunc(reshape);         // Register callback handler for window re-size event
+	initGL();                         // Our own OpenGL initialization
+	glutMainLoop();                    // Enter the infinite event-processing loop
 	return 0;
+}
+
+void cubo(float a) {
+    glBegin(GL_TRIANGLE_STRIP);
+    glColor3f(0.0, 0.1, 0.5);
+    glVertex3f(-a / 2, a / 2, a / 2);
+    glVertex3f(-a / 2, -a / 2, a / 2);
+    glVertex3f(a / 2, a / 2, a / 2);
+    glVertex3f(a / 2, -a / 2, a / 2);
+    glVertex3f(a / 2, a / 2, -a / 2);
+    glColor3f(0.5, 0.1, 0.5);
+    glVertex3f(a / 2, -a / 2, -a / 2);
+    glVertex3f(-a / 2, a / 2, -a / 2);
+    glVertex3f(-a / 2, -a / 2, -a / 2);
+    glVertex3f(-a / 2, a / 2, a / 2);
+    glVertex3f(-a / 2, -a / 2, a / 2);
+    glEnd();
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(-a / 2, a / 2, -a / 2);
+    glVertex3f(-a / 2, a / 2, a / 2);
+    glVertex3f(a / 2, a / 2, -a / 2);
+    glVertex3f(a / 2, a / 2, a / 2);
+    glEnd();
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(a / 2, -a / 2, -a / 2);
+    glVertex3f(a / 2, -a / 2, a / 2);
+    glVertex3f(-a / 2, -a / 2, -a / 2);
+    glVertex3f(-a / 2, -a / 2, a / 2);
+    glEnd();
 }
